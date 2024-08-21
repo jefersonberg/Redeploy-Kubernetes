@@ -1,0 +1,9 @@
+Crie o ConfigMap:
+kubectl apply -f redeploy-configmap.yaml
+
+Construa e envie a imagem Docker para um repositório:
+docker build -t your-docker-repo/redeploy-applications:latest .
+docker push your-docker-repo/redeploy-applications:latest
+
+Crie o CronJob:
+kubectl apply -f redeploy-cronjob.yaml

@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: redeploy
+  namespace: sre
+spec:
+  schedule: "0 4 * * *" # Execute todos os dias às 4 horas da manhã
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: redeploy
+            image: your-docker-repo/redeploy:latest
+            volumeMounts:
+            - name: config-volume
+              mountPath: /config
+              subPath: applications
+          volumes:
+          - name: config-volume
+            configMap:
+              name: redeploy
+          restartPolicy: OnFailure

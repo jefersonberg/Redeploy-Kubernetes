@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redeploy
+  namespace: sre
+data:
+  applications: |
+    namespace1.deploy1
+    namespace1.deploy2
+    namespace2.deploy1
+    namespace3.deploy_exemplo
